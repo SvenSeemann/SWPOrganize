@@ -1,7 +1,8 @@
 package de.tud.groups;
 
-import de.swp.github.manager.jenkins.JenkinsServerManager;
-import de.swp.github.manager.jenkins.jobs.xml.JenkinsJobXml;
+
+import de.tud.jenkins.JenkinsServerManager;
+import de.tud.jenkins.jobs.xml.JenkinsJobXml;
 
 /**
  * @author svenseemann

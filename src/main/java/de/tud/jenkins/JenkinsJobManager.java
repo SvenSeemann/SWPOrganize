@@ -1,8 +1,9 @@
-package de.swp.github.manager.jenkins;
+package de.tud.jenkins;
 
-import de.swp.github.manager.jenkins.jobs.JenkinsAnalyzeJob;
-import de.swp.github.manager.jenkins.jobs.JenkinsBuildJob;
-import de.swp.github.manager.jenkins.jobs.xml.JenkinsJobXml;
+
+import de.tud.jenkins.jobs.JenkinsAnalyzeJob;
+import de.tud.jenkins.jobs.JenkinsBuildJob;
+import de.tud.jenkins.jobs.xml.JenkinsJobXml;
 
 /**
  * @author svenseemann

@@ -1,5 +1,7 @@
 package de.tud.swporganize.controller;
 
+import de.tud.github.GitHubManager;
+import de.tud.groups.GroupManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
@@ -31,7 +33,7 @@ public class OverviewController extends AbstractController {
     private TextField txtGrpCount;
 
     @FXML
-    private void getInputFields() {
+    private void startSetup() {
         String namePrefix = this.txtNamePrefix.getText();
         String jenkinsUsername = this.txtJenkinsName.getText();
         char[] jenkinsPassword = this.txtJenkinsPwd.getText().toCharArray();
@@ -43,6 +45,9 @@ public class OverviewController extends AbstractController {
             showNoNumberErrorDialog();
             return;
         }
+
+        GitHubManager.instanceOf().connectToGitHub();
+        GroupManager.instanceOf().createGroups();
 
         System.out.println(namePrefix);
     }
@@ -64,6 +69,6 @@ public class OverviewController extends AbstractController {
     }
 
     public void initialize(URL location, ResourceBundle resources) {
-        
+
     }
 }

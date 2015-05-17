@@ -30,7 +30,7 @@
                         <PasswordField fx:id="txtJenkinsPwd" layoutX="37.0" layoutY="417.0" prefHeight="32.0"
                                        prefWidth="388.0"/>
                         <Button id="btn-start-proces" layoutX="138.0" layoutY="575.0" mnemonicParsing="false"
-                                onAction="#getInputFields" prefHeight="92.0" prefWidth="186.0" text="Starten"/>
+                                onAction="#startSetup" prefHeight="92.0" prefWidth="186.0" text="Starten"/>
                         <TextField fx:id="txtGrpCount" layoutX="37.0" layoutY="501.0" prefHeight="32.0"
                                    prefWidth="388.0"/>
                     </children>
