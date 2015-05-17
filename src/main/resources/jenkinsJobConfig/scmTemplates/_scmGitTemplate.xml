@@ -1,0 +1,17 @@
+<scm class="" plugin="">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+        <hudson.plugins.git.UserRemoteConfig>
+            <url></url>
+            <credentialsId></credentialsId>
+        </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+        <hudson.plugins.git.BranchSpec>
+            <name>*/master</name>
+        </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+</scm>
