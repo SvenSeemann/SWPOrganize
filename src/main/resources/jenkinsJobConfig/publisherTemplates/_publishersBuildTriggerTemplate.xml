@@ -1,0 +1,11 @@
+<hudson.tasks.BuildTrigger>
+    <childProjects>
+        <!-- FILL IN CHILD JOB WITH SPECIFIC NAME - Ex. 'Analyze swt15wXX' -->
+    </childProjects>
+    <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+    </threshold>
+</hudson.tasks.BuildTrigger>
