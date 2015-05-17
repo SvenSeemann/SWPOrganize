@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="982.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.tud.swporganize.controller.OverviewController">
+   <children>
+      <SplitPane dividerPositions="0.5122448979591837" layoutX="193.0" layoutY="98.0" prefHeight="750.0" prefWidth="982.0" stylesheets="@main.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="anchorPane">
+               <children>
+                  <TextField fx:id="txtNamePrefix" layoutX="36.0" layoutY="72.0" prefHeight="32.0" prefWidth="388.0" />
+                  <TextField fx:id="txtJenkinsName" layoutX="36.0" layoutY="335.0" prefHeight="32.0" prefWidth="388.0" />
+                  <TextField fx:id="txtGhName" layoutX="36.0" layoutY="153.0" prefHeight="32.0" prefWidth="388.0" />
+                  <TextField fx:id="txtGhOauth" layoutX="36.0" layoutY="239.0" prefHeight="32.0" prefWidth="388.0" />
+                   <Label layoutX="33.0" layoutY="477.0" styleClass="formLabel" text="Gruppenanzahl" />
+
+                  <Label layoutX="36.0" layoutY="217.0" styleClass="formLabel" text="GitHub OAuth Token" />
+                  <Label layoutX="36.0" layoutY="312.0" styleClass="formLabel" text="Jenkins Nutzername" />
+                  <Label layoutX="37.0" layoutY="50.0" styleClass="formLabel" text="Namenspräfix" />
+                  <Label layoutX="36.0" layoutY="130.0" styleClass="formLabel" text="GitHub Nutzername" />
+                  <Label layoutX="36.0" layoutY="394.0" styleClass="formLabel" text="Jenkins Passwort" />
+                  <PasswordField fx:id="txtJenkinsPwd" layoutX="37.0" layoutY="417.0" prefHeight="32.0" prefWidth="388.0" />
+                  <Button id="btn-start-proces" layoutX="138.0" layoutY="575.0" mnemonicParsing="false" onAction="#getInputFields" prefHeight="92.0" prefWidth="186.0" text="Starten" />
+                  <TextField fx:id="txtGrpCount" layoutX="37.0" layoutY="501.0" prefHeight="32.0" prefWidth="388.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="anchorPane">
+               <children>
+                  <GridPane gridLinesVisible="true" prefHeight="127.0" prefWidth="474.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="368.0" minWidth="10.0" prefWidth="367.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="231.0" minWidth="10.0" prefWidth="107.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Pane styleClass="stateHeadWrapper">
+                           <children>
+                              <Label layoutX="14.0" layoutY="6.0" styleClass="stateHead" text="Aufgabe" />
+                           </children>
+                        </Pane>
+                         <Pane styleClass="stateHeadWrapper" GridPane.columnIndex="1">
+                             <children>
+                                 <Label layoutX="14.0" layoutY="8.0" styleClass="stateHead" text="Status" />
+                             </children>
+                         </Pane>
+                         <Pane GridPane.rowIndex="3">
+                             <children>
+                                 <Label layoutX="14.0" layoutY="8.0" styleClass="stateLabel" text="Anlegen der Jenkins Jqobs" />
+                             </children>
+                         </Pane>
+                         <Pane GridPane.rowIndex="2">
+                             <children>
+                                 <Label layoutX="14.0" layoutY="10.0" styleClass="stateLabel" text="Anlegen der Repositories" />
+                             </children>
+                         </Pane>
+                         <Pane GridPane.columnIndex="1" GridPane.rowIndex="1">
+                             <children>
+                                 <Label layoutX="20.0" layoutY="10.0" styleClass="stateLabel" text="offen" />
+                             </children>
+                         </Pane>
+                         <Pane GridPane.columnIndex="1" GridPane.rowIndex="2">
+                             <children>
+                                 <Label layoutX="20.0" layoutY="6.0" styleClass="stateLabel" text="offen" />
+                             </children>
+                         </Pane>
+                         <Pane GridPane.columnIndex="1" GridPane.rowIndex="3">
+                             <children>
+                                 <Label layoutX="20.0" layoutY="8.0" styleClass="stateLabel" text="offen" />
+                             </children>
+                         </Pane>
+                         <Pane GridPane.rowIndex="1">
+                             <children>
+                                 <Label layoutX="14.0" layoutY="8.0" styleClass="stateLabel" text="Anlegen der Gruppen" />
+                             </children>
+                         </Pane>
+                     </children>
+                  </GridPane>
+                  <ListView layoutX="14.0" layoutY="138.0" prefHeight="599.0" prefWidth="448.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" />
+                  <Pane layoutX="31.0" layoutY="120.0" prefHeight="23.0" prefWidth="150.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+    
+</AnchorPane>

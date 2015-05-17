@@ -1,0 +1,71 @@
+.formLabel {
+    -fx-font-weight: bold;
+    -fx-text-fill: #5F6362;
+    -fx-font-family: Verdana;
+}
+
+.stateLabel {
+    -fx-text-fill: #5F6362;
+    -fx-font-family: Verdana;
+}
+
+.stateHeadWrapper {
+    -fx-background-color: #0B2A51;
+}
+
+.stateHead {
+    -fx-font-weight: bolder;
+    -fx-font-family: Verdana;
+    -fx-text-fill: #CDD4E2;
+}
+
+.background{
+    -fx-background-color: #CDD4E2;
+}
+
+.anchorPane {
+    -fx-background-color: #CDD4E2;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Push Button                                                                 *
+ *                                                                             *
+ ******************************************************************************/
+
+.button {
+    -fx-padding: 5 22 5 22;
+    -fx-border-color: #003866;
+    -fx-border-width: 2;
+
+    -fx-background-radius: 0;
+
+    -fx-background-color: #0059A3;
+
+    -fx-font-family: Verdana;
+
+    -fx-font-weight: bolder;
+    -fx-text-fill: #e2e2e2;
+}
+
+.button:hover{
+    -fx-background-color: #003866;
+}
+
+.button:pressed, .button:default:hover:pressed
+{
+    -fx-background-color: white;
+    -fx-text-fill: #1d1d1d;
+}
+
+.button:focused
+{
+    -fx-border-color: white, white;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
+    -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+
+
+
