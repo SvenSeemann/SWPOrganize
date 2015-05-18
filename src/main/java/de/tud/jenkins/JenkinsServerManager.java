@@ -12,13 +12,14 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * @author svenseemann
  */
-public class JenkinsServerManager {
+public class JenkinsServerManager extends Observable {
 
     private static JenkinsServerManager instance;
 

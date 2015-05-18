@@ -5,10 +5,12 @@ import de.tud.jenkins.jobs.JenkinsAnalyzeJob;
 import de.tud.jenkins.jobs.JenkinsBuildJob;
 import de.tud.jenkins.jobs.xml.JenkinsJobXml;
 
+import java.util.Observable;
+
 /**
  * @author svenseemann
  */
-public class JenkinsJobManager {
+public class JenkinsJobManager extends Observable {
 
     private JobPropertiesManager jpm;
 

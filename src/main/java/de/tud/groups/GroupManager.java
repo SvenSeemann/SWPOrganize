@@ -8,12 +8,13 @@ import org.kohsuke.github.GHRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 import java.util.Optional;
 
 /**
  * @author svenseemann
  */
-public class GroupManager {
+public class GroupManager extends Observable {
 
     /**
      * The namePrefix is used to generate names for groups and repositories.
@@ -101,8 +102,10 @@ public class GroupManager {
             this.createGroupJenkinsResource(group);
             group.getJenkinsResource().pushJobs();
             this.groups.add(group);
+            this.notifyObservers(false);
             return true;
         } else {
+            this.notifyObservers(true);
             return false;
         }
     }
