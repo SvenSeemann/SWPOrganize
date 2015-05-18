@@ -22,7 +22,8 @@ public class JenkinsServerManager {
 
     private static JenkinsServerManager instance;
 
-    private static final String HOSTNAME = "http://bindoc-db.de/jenkins";
+    private String hostname;
+    private static final String JENKINS_WEBHOOK_PATH = "/github-webhook/";
     private static final String CREATE_PATH = "/createItem";
     private static final String CREDENTIALS_PATH = "/credential-store/domain";
     private static final String XML_API_PATH = "/api/xml";
@@ -118,9 +119,12 @@ public class JenkinsServerManager {
         return new String(credentialsEncoded);
     }
 
+    public String createWebhookTarget() {
+        return this.hostname + JenkinsServerManager.JENKINS_WEBHOOK_PATH;
+    }
 
     private URL createUrlCreateJob(String jobName) {
-        String urlString = JenkinsServerManager.HOSTNAME
+        String urlString = this.hostname
                 + JenkinsServerManager.CREATE_PATH
                 + "?name=" + jobName;
         URL url = null;
@@ -135,7 +139,7 @@ public class JenkinsServerManager {
     }
 
     private URL createUrlCredentials(String domain) {
-        String urlString = JenkinsServerManager.HOSTNAME
+        String urlString = this.hostname
                 + JenkinsServerManager.CREDENTIALS_PATH
                 + "/" + domain
                 + JenkinsServerManager.XML_API_PATH;
@@ -226,6 +230,10 @@ public class JenkinsServerManager {
         return document;
     }
 
+    public void setHostname(String hostname) {
+        this.hostname = hostname;
+    }
+
     public void setJenkinsUsername(String jenkinsUsername) {
         this.jenkinsUsername = jenkinsUsername;
     }
@@ -234,13 +242,11 @@ public class JenkinsServerManager {
         return jenkinsUsername;
     }
 
-    public void setJenkinsPassword(String jenkinsPassword) {
-        //TODO: add encryption
-        this.jenkinsPasswordEnc = jenkinsPassword.toCharArray();
+    public void setJenkinsPassword(char[] jenkinsPassword) {
+        this.jenkinsPasswordEnc = jenkinsPassword;
     }
 
     public char[] getJenkinsPassword() {
-        //TODO: add decryption
         return jenkinsPasswordEnc;
     }
 }

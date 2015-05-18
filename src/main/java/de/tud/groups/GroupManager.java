@@ -1,9 +1,9 @@
 package de.tud.groups;
 
-import de.swp.github.manager.github.GitHubManager;
-import de.swp.github.manager.jenkins.JenkinsJobManager;
-import de.swp.github.manager.jenkins.JenkinsServerManager;
-import de.swp.github.manager.jenkins.jobs.xml.JenkinsJobXml;
+import de.tud.github.GitHubManager;
+import de.tud.jenkins.JenkinsJobManager;
+import de.tud.jenkins.JenkinsServerManager;
+import de.tud.jenkins.jobs.xml.JenkinsJobXml;
 import org.kohsuke.github.GHRepository;
 
 import java.util.ArrayList;
@@ -162,7 +162,6 @@ public class GroupManager {
     /**
      * @param group
      * @return
-     * @see createGroupsBuildJob (just for triggering sonarqube static code analysis instead of build/test)
      */
     private JenkinsJobXml createGroupsAnalyzeJob(Group group) {
         JenkinsJobXml analyzeJob = JenkinsJobManager

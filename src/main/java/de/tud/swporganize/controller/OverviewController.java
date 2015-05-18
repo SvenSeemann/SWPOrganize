@@ -1,5 +1,8 @@
 package de.tud.swporganize.controller;
 
+import de.tud.github.GitHubManager;
+import de.tud.groups.GroupManager;
+import de.tud.jenkins.JenkinsServerManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
@@ -14,6 +17,9 @@ public class OverviewController extends AbstractController {
 
     @FXML
     private TextField txtNamePrefix;
+
+    @FXML
+    private TextField txtJenkinsURL;
 
     @FXML
     private TextField txtJenkinsName;
@@ -31,8 +37,9 @@ public class OverviewController extends AbstractController {
     private TextField txtGrpCount;
 
     @FXML
-    private void getInputFields() {
+    private void startSetup() {
         String namePrefix = this.txtNamePrefix.getText();
+        String jenkinsURL = this.txtJenkinsURL.getText();
         String jenkinsUsername = this.txtJenkinsName.getText();
         char[] jenkinsPassword = this.txtJenkinsPwd.getText().toCharArray();
         String ghUsername = this.txtGhName.getText();
@@ -44,7 +51,15 @@ public class OverviewController extends AbstractController {
             return;
         }
 
-        System.out.println(namePrefix);
+        GroupManager.instanceOf().setNamePrefix(namePrefix);
+        GroupManager.instanceOf().setGroupCount(grpCount.get());
+        GitHubManager.instanceOf().setUsername(ghUsername);
+        GitHubManager.instanceOf().setOauthToken(ghOauth);
+        JenkinsServerManager.instanceOf().setJenkinsUsername(jenkinsUsername);
+        JenkinsServerManager.instanceOf().setJenkinsPassword(jenkinsPassword);
+        JenkinsServerManager.instanceOf().setHostname(jenkinsURL);
+        GitHubManager.instanceOf().connectToGitHub();
+        GroupManager.instanceOf().createGroups();
     }
 
     private Optional<Integer> evaluateGrpCount() {
@@ -64,6 +79,6 @@ public class OverviewController extends AbstractController {
     }
 
     public void initialize(URL location, ResourceBundle resources) {
-        
+
     }
 }
