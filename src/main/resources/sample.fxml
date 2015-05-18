@@ -103,9 +103,9 @@
                                 </Pane>
                             </children>
                         </GridPane>
-                        <ListView layoutX="14.0" layoutY="138.0" prefHeight="599.0" prefWidth="448.0"
-                                  AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0"/>
                         <Pane layoutX="31.0" layoutY="120.0" prefHeight="23.0" prefWidth="150.0"/>
+                        <TextArea fx:id="textStateLog" editable="false" layoutX="31.0" layoutY="143.0"
+                                  prefHeight="589.0" prefWidth="418.0" text="Just a test"/>
                     </children>
                 </AnchorPane>
             </items>

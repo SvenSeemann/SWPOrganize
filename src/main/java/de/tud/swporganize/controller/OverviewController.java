@@ -5,10 +5,7 @@ import de.tud.groups.GroupManager;
 import de.tud.jenkins.JenkinsJobManager;
 import de.tud.jenkins.JenkinsServerManager;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.Observable;
@@ -39,6 +36,8 @@ public class OverviewController extends AbstractController implements Observer {
     private Label stateLabelRepositories;
     @FXML
     private Label stateLabelJenkins;
+    @FXML
+    private TextArea textStateLog;
 
     @FXML
     private void startSetup() {
@@ -101,13 +100,18 @@ public class OverviewController extends AbstractController implements Observer {
         label.getStyleClass().add("errorState");
     }
 
+    public void addToStateLog(String message) {
+        System.out.println(message);
+        this.textStateLog.textProperty().set("HUEHUEHUE");
+        System.out.println(this.textStateLog.getText());
+    }
+
     public void initialize(URL location, ResourceBundle resources) {
+
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        System.out.println(o.getClass().getSimpleName());
-
         Label toChange = null;
 
         if (o.equals(GroupManager.instanceOf())) {
