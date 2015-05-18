@@ -68,11 +68,13 @@ public class GroupManager extends Observable {
      */
     public Boolean createGroups() {
         Boolean success = true;
+        this.setChanged();
 
         for (int i = 1; i <= this.groupCount; i++) {
             success = success && this.createGroup(i);
         }
 
+        this.notifyObservers(false);
         return success;
     }
 
@@ -94,6 +96,8 @@ public class GroupManager extends Observable {
      * false, if an error occur (already created repositories and resources will be deleted)
      */
     private boolean createGroup(Integer number) {
+        this.setChanged();
+
         final String groupName = this.createGroupName(number);
         Group group = new Group(groupName, number);
         Optional<GHRepository> repo = this.createGroupRepository(group);
@@ -102,7 +106,6 @@ public class GroupManager extends Observable {
             this.createGroupJenkinsResource(group);
             group.getJenkinsResource().pushJobs();
             this.groups.add(group);
-            this.notifyObservers(false);
             return true;
         } else {
             this.notifyObservers(true);
