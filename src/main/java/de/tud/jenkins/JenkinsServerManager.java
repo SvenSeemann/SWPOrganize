@@ -1,5 +1,8 @@
 package de.tud.jenkins;
 
+import de.tud.swporganize.controller.OverviewController;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 import org.apache.commons.codec.binary.Base64;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -12,13 +15,14 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * @author svenseemann
  */
-public class JenkinsServerManager {
+public class JenkinsServerManager extends Observable {
 
     private static JenkinsServerManager instance;
 
@@ -31,6 +35,8 @@ public class JenkinsServerManager {
     private String jenkinsUsername;
     private char[] jenkinsPasswordEnc;
 
+    private OverviewController overviewController;
+
     public static JenkinsServerManager instanceOf() {
         if (instance == null) {
             instance = new JenkinsServerManager();
@@ -40,6 +46,13 @@ public class JenkinsServerManager {
     }
 
     private JenkinsServerManager() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            Pane p = fxmlLoader.load(getClass().getResource("sample.fxml").openStream());
+            this.overviewController = fxmlLoader.getController();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private HttpURLConnection getCreateJobConnection(
@@ -59,12 +72,14 @@ public class JenkinsServerManager {
             URL url,
             String username,
             char[] password) {
+        this.setChanged();
 
         HttpURLConnection connection = null;
         try {
             connection = this.getBaseAuthConnection(url, username, password);
             connection.setRequestMethod("POST");
         } catch (ProtocolException ex) {
+            this.notifyObservers(true);
             Logger.getLogger(JenkinsServerManager.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
@@ -88,6 +103,7 @@ public class JenkinsServerManager {
     }
 
     private HttpURLConnection getBasicConnection(URL url) {
+        this.setChanged();
 
         HttpURLConnection basicConnection = null;
 
@@ -96,6 +112,7 @@ public class JenkinsServerManager {
             basicConnection.setRequestProperty("charset", "utf-8");
             basicConnection.setDoOutput(true);
         } catch (IOException ex) {
+            this.notifyObservers(true);
             Logger.getLogger(JenkinsServerManager.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
@@ -124,6 +141,7 @@ public class JenkinsServerManager {
     }
 
     private URL createUrlCreateJob(String jobName) {
+        this.setChanged();
         String urlString = this.hostname
                 + JenkinsServerManager.CREATE_PATH
                 + "?name=" + jobName;
@@ -132,6 +150,7 @@ public class JenkinsServerManager {
         try {
             url = new URL(urlString);
         } catch (MalformedURLException ex) {
+            this.notifyObservers();
             Logger.getLogger(JenkinsServerManager.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -139,6 +158,7 @@ public class JenkinsServerManager {
     }
 
     private URL createUrlCredentials(String domain) {
+        this.setChanged();
         String urlString = this.hostname
                 + JenkinsServerManager.CREDENTIALS_PATH
                 + "/" + domain
@@ -149,6 +169,7 @@ public class JenkinsServerManager {
         try {
             url = new URL(urlString);
         } catch (MalformedURLException ex) {
+            this.notifyObservers(true);
             Logger.getLogger(JenkinsServerManager.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
@@ -162,6 +183,7 @@ public class JenkinsServerManager {
             String username,
             char[] password) {
 
+        this.setChanged();
         OutputStream os;
 
         try {
@@ -184,11 +206,13 @@ public class JenkinsServerManager {
 
             connection.disconnect();
         } catch (Exception e) {
+            this.notifyObservers();
             Logger.getLogger(JenkinsServerManager.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
     public String getGitHubCredentials(String username, char[] password) {
+        this.setChanged();
         HttpURLConnection connection =
                 this.getBaseAuthConnection(this.createUrlCredentials("GitHub"), username, password);
         String credentialsString = null;
@@ -208,6 +232,7 @@ public class JenkinsServerManager {
              */
             credentialsString = "0" + credentialsString;
         } catch (IOException ex) {
+            this.notifyObservers();
             Logger.getLogger(JenkinsServerManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println(String.format("The credentials string is: %s", credentialsString));
@@ -228,6 +253,10 @@ public class JenkinsServerManager {
         }
 
         return document;
+    }
+
+    private void displayState(String message) {
+
     }
 
     public void setHostname(String hostname) {

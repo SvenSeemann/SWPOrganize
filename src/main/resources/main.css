@@ -1,10 +1,13 @@
-.formLabel {
-    -fx-font-weight: bold;
-    -fx-text-fill: #5F6362;
-    -fx-font-family: Verdana;
+.background {
+    -fx-background-color: #CDD4E2;
 }
 
-.stateLabel {
+.anchorPane {
+    -fx-background-color: #CDD4E2;
+}
+
+.formLabel {
+    -fx-font-weight: bold;
     -fx-text-fill: #5F6362;
     -fx-font-family: Verdana;
 }
@@ -19,13 +22,21 @@
     -fx-text-fill: #CDD4E2;
 }
 
-.background {
-    -fx-background-color: #CDD4E2;
+.stateLabel {
+    -fx-text-fill: #5F6362;
+    -fx-font-family: Verdana;
 }
 
-.anchorPane {
-    -fx-background-color: #CDD4E2;
+.successState {
+    -fx-font-weight: bolder;
+    -fx-text-fill: #009d00;
 }
+
+.errorState {
+    -fx-font-weight: bolder;
+    -fx-text-fill: #bd0000;
+}
+
 
 /*******************************************************************************
  *                                                                             *

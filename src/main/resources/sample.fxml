@@ -68,7 +68,7 @@
                                 <Pane GridPane.rowIndex="3">
                                     <children>
                                         <Label layoutX="14.0" layoutY="8.0" styleClass="stateLabel"
-                                               text="Anlegen der Jenkins Jqobs"/>
+                                               text="Anlegen der Jenkins Jobs"/>
                                     </children>
                                 </Pane>
                                 <Pane GridPane.rowIndex="2">
@@ -79,17 +79,20 @@
                                 </Pane>
                                 <Pane GridPane.columnIndex="1" GridPane.rowIndex="1">
                                     <children>
-                                        <Label layoutX="20.0" layoutY="10.0" styleClass="stateLabel" text="offen"/>
+                                        <Label fx:id="stateLabelGroups" layoutX="20.0" layoutY="10.0"
+                                               styleClass="stateLabel" text="offen"/>
                                     </children>
                                 </Pane>
                                 <Pane GridPane.columnIndex="1" GridPane.rowIndex="2">
                                     <children>
-                                        <Label layoutX="20.0" layoutY="6.0" styleClass="stateLabel" text="offen"/>
+                                        <Label fx:id="stateLabelRepositories" layoutX="20.0" layoutY="6.0"
+                                               styleClass="stateLabel" text="offen"/>
                                     </children>
                                 </Pane>
                                 <Pane GridPane.columnIndex="1" GridPane.rowIndex="3">
                                     <children>
-                                        <Label layoutX="20.0" layoutY="8.0" styleClass="stateLabel" text="offen"/>
+                                        <Label fx:id="stateLabelJenkins" layoutX="20.0" layoutY="8.0"
+                                               styleClass="stateLabel" text="offen"/>
                                     </children>
                                 </Pane>
                                 <Pane GridPane.rowIndex="1">

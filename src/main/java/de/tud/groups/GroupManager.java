@@ -8,12 +8,13 @@ import org.kohsuke.github.GHRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 import java.util.Optional;
 
 /**
  * @author svenseemann
  */
-public class GroupManager {
+public class GroupManager extends Observable {
 
     /**
      * The namePrefix is used to generate names for groups and repositories.
@@ -67,11 +68,13 @@ public class GroupManager {
      */
     public Boolean createGroups() {
         Boolean success = true;
+        this.setChanged();
 
         for (int i = 1; i <= this.groupCount; i++) {
             success = success && this.createGroup(i);
         }
 
+        this.notifyObservers(false);
         return success;
     }
 
@@ -93,6 +96,8 @@ public class GroupManager {
      * false, if an error occur (already created repositories and resources will be deleted)
      */
     private boolean createGroup(Integer number) {
+        this.setChanged();
+
         final String groupName = this.createGroupName(number);
         Group group = new Group(groupName, number);
         Optional<GHRepository> repo = this.createGroupRepository(group);
@@ -103,6 +108,7 @@ public class GroupManager {
             this.groups.add(group);
             return true;
         } else {
+            this.notifyObservers(true);
             return false;
         }
     }
