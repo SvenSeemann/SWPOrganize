@@ -13,26 +13,29 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="anchorPane">
                     <children>
                         <TextField fx:id="txtNamePrefix" layoutX="36.0" layoutY="72.0" prefHeight="32.0"
-                                   prefWidth="388.0"/>
-                        <TextField fx:id="txtJenkinsName" layoutX="36.0" layoutY="335.0" prefHeight="32.0"
-                                   prefWidth="388.0"/>
-                        <TextField fx:id="txtGhName" layoutX="36.0" layoutY="153.0" prefHeight="32.0"
-                                   prefWidth="388.0"/>
-                        <TextField fx:id="txtGhOauth" layoutX="36.0" layoutY="239.0" prefHeight="32.0"
-                                   prefWidth="388.0"/>
-                        <Label layoutX="33.0" layoutY="477.0" styleClass="formLabel" text="Gruppenanzahl"/>
+                                   prefWidth="388.0" text="swt15w"/>
+                        <TextField fx:id="txtJenkinsName" layoutX="37.0" layoutY="397.0" prefHeight="32.0"
+                                   prefWidth="388.0" text="sseemann"/>
+                        <TextField fx:id="txtGhName" layoutX="36.0" layoutY="153.0" prefHeight="32.0" prefWidth="388.0"
+                                   text="svenseemann"/>
+                        <TextField fx:id="txtGhOauth" layoutX="36.0" layoutY="239.0" prefHeight="32.0" prefWidth="388.0"
+                                   text="cbbddb5a31014d9894f36c4416c4481db5bfb2b4"/>
+                        <Label layoutX="34.0" layoutY="539.0" styleClass="formLabel" text="Gruppenanzahl"/>
 
                         <Label layoutX="36.0" layoutY="217.0" styleClass="formLabel" text="GitHub OAuth Token"/>
-                        <Label layoutX="36.0" layoutY="312.0" styleClass="formLabel" text="Jenkins Nutzername"/>
+                        <Label layoutX="37.0" layoutY="374.0" styleClass="formLabel" text="Jenkins Nutzername"/>
                         <Label layoutX="37.0" layoutY="50.0" styleClass="formLabel" text="Namenspräfix"/>
                         <Label layoutX="36.0" layoutY="130.0" styleClass="formLabel" text="GitHub Nutzername"/>
-                        <Label layoutX="36.0" layoutY="394.0" styleClass="formLabel" text="Jenkins Passwort"/>
-                        <PasswordField fx:id="txtJenkinsPwd" layoutX="37.0" layoutY="417.0" prefHeight="32.0"
-                                       prefWidth="388.0"/>
-                        <Button id="btn-start-proces" layoutX="138.0" layoutY="575.0" mnemonicParsing="false"
+                        <Label layoutX="37.0" layoutY="456.0" styleClass="formLabel" text="Jenkins Passwort"/>
+                        <PasswordField fx:id="txtJenkinsPwd" layoutX="38.0" layoutY="479.0" prefHeight="32.0"
+                                       prefWidth="388.0" text="De1147oo!"/>
+                        <Button id="btn-start-proces" layoutX="139.0" layoutY="637.0" mnemonicParsing="false"
                                 onAction="#startSetup" prefHeight="92.0" prefWidth="186.0" text="Starten"/>
-                        <TextField fx:id="txtGrpCount" layoutX="37.0" layoutY="501.0" prefHeight="32.0"
+                        <TextField fx:id="txtGrpCount" layoutX="38.0" layoutY="563.0" prefHeight="32.0"
                                    prefWidth="388.0"/>
+                        <TextField fx:id="txtJenkinsURL" layoutX="36.0" layoutY="331.0" prefHeight="32.0"
+                                   prefWidth="388.0" text="http://bindoc-db.de/jenkins/"/>
+                        <Label layoutX="36.0" layoutY="307.0" styleClass="formLabel" text="Jenkins URL"/>
                     </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="anchorPane">
