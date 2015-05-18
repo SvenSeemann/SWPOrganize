@@ -48,7 +48,7 @@ public class JenkinsServerManager extends Observable {
     private JenkinsServerManager() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            Pane p = fxmlLoader.load(getClass().getResource("sample.fxml").openStream());
+            Pane p = fxmlLoader.load(getClass().getClassLoader().getResource("sample.fxml").openStream());
             this.overviewController = fxmlLoader.getController();
         } catch (IOException e) {
             e.printStackTrace();
@@ -253,10 +253,6 @@ public class JenkinsServerManager extends Observable {
         }
 
         return document;
-    }
-
-    private void displayState(String message) {
-
     }
 
     public void setHostname(String hostname) {
