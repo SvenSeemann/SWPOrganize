@@ -12,6 +12,7 @@ import java.util.Observable;
  */
 public class JenkinsJobManager extends Observable {
 
+
     private JobPropertiesManager jpm;
 
     private static JenkinsJobManager instance;

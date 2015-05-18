@@ -30,7 +30,7 @@ public class GroupManager extends Observable {
     public static final String WORKSPACE_PATH = "/workspace";
 
     /**
-     * The relative path to the defined workspaces from ${JENKINS_HOME}.
+     * The relative path to the defined workspaces from ${JENKINS_HOME} path.
      */
     public static final String JOB_PATH = "jobs/";
 

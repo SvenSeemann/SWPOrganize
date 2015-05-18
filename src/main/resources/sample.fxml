@@ -19,7 +19,7 @@
                         <TextField fx:id="txtGhName" layoutX="36.0" layoutY="153.0" prefHeight="32.0" prefWidth="388.0"
                                    text="svenseemann"/>
                         <TextField fx:id="txtGhOauth" layoutX="36.0" layoutY="239.0" prefHeight="32.0" prefWidth="388.0"
-                                   text="cbbddb5a31014d9894f36c4416c4481db5bfb2b4"/>
+                                   text=""/>
                         <Label layoutX="34.0" layoutY="539.0" styleClass="formLabel" text="Gruppenanzahl"/>
 
                         <Label layoutX="36.0" layoutY="217.0" styleClass="formLabel" text="GitHub OAuth Token"/>
@@ -28,13 +28,13 @@
                         <Label layoutX="36.0" layoutY="130.0" styleClass="formLabel" text="GitHub Nutzername"/>
                         <Label layoutX="37.0" layoutY="456.0" styleClass="formLabel" text="Jenkins Passwort"/>
                         <PasswordField fx:id="txtJenkinsPwd" layoutX="38.0" layoutY="479.0" prefHeight="32.0"
-                                       prefWidth="388.0" text="De1147oo!"/>
+                                       prefWidth="388.0" text=""/>
                         <Button id="btn-start-proces" layoutX="139.0" layoutY="637.0" mnemonicParsing="false"
                                 onAction="#startSetup" prefHeight="92.0" prefWidth="186.0" text="Starten"/>
                         <TextField fx:id="txtGrpCount" layoutX="38.0" layoutY="563.0" prefHeight="32.0"
                                    prefWidth="388.0"/>
                         <TextField fx:id="txtJenkinsURL" layoutX="36.0" layoutY="331.0" prefHeight="32.0"
-                                   prefWidth="388.0" text="http://bindoc-db.de/jenkins/"/>
+                                   prefWidth="388.0" text=""/>
                         <Label layoutX="36.0" layoutY="307.0" styleClass="formLabel" text="Jenkins URL"/>
                     </children>
                 </AnchorPane>

@@ -5,6 +5,7 @@ import de.tud.groups.GroupManager;
 import de.tud.jenkins.JenkinsJobManager;
 import de.tud.jenkins.JenkinsServerManager;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
@@ -14,7 +15,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 
-public class OverviewController extends AbstractController implements Observer {
+public class OverviewController implements Observer, Initializable {
 
     @FXML
     private TextField txtNamePrefix;
