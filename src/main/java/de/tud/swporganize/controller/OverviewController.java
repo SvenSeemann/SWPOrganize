@@ -4,9 +4,11 @@ import de.tud.github.GitHubManager;
 import de.tud.groups.GroupManager;
 import de.tud.jenkins.JenkinsJobManager;
 import de.tud.jenkins.JenkinsServerManager;
+import de.tud.util.LogStatementHelper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import sun.rmi.runtime.Log;
 
 import java.net.URL;
 import java.util.Observable;
@@ -73,6 +75,7 @@ public class OverviewController implements Observer, Initializable {
         GitHubManager.instanceOf().addObserver(this);
         JenkinsServerManager.instanceOf().addObserver(this);
         JenkinsJobManager.instanceOf().addObserver(this);
+        LogStatementHelper.instanceOf().addObserver(this);
     }
 
     private Optional<Integer> evaluateGrpCount() {
@@ -103,7 +106,8 @@ public class OverviewController implements Observer, Initializable {
 
     public void addToStateLog(String message) {
         System.out.println(message);
-        this.textStateLog.textProperty().set("HUEHUEHUE");
+        this.textStateLog.appendText("\n");
+        this.textStateLog.appendText(message);
         System.out.println(this.textStateLog.getText());
     }
 
@@ -113,6 +117,13 @@ public class OverviewController implements Observer, Initializable {
 
     @Override
     public void update(Observable o, Object arg) {
+
+        if(o instanceof LogStatementHelper) {
+            String message = String.valueOf(arg);
+            this.addToStateLog(message);
+            return;
+        }
+
         Label toChange = null;
 
         if (o.equals(GroupManager.instanceOf())) {
@@ -132,6 +143,8 @@ public class OverviewController implements Observer, Initializable {
         } else {
             this.setLabelToDone(toChange);
         }
+
+
     }
 
 
