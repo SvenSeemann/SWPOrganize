@@ -20,6 +20,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Manages the Connection to the Jenkins Server.
+ * Also pushes the configured jobs to the Jenkins.
+ * {@see JenkinsJob} {@see JenkinsJobManager}
+ *
  * @author svenseemann
  */
 public class JenkinsServerManager extends Observable {

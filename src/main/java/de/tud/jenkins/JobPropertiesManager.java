@@ -7,17 +7,35 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Singleton class reading and providing the properties
+ * defined in resources/jenkinsJobConfig/jobConfig.properties.
+ *
  * @author svenseemann
  */
 public class JobPropertiesManager {
 
+    /**
+     * Location of Properties file.
+     */
     private static final String JOB_PROPERTIES =
             "/jenkinsJobConfig/jobConfig.properties";
 
+    /**
+     * Properties object holding the read properties
+     * from file.
+     */
     private final Properties properties;
 
+    /**
+     * Static Singleton instance.
+     */
     private static JobPropertiesManager instance;
 
+    /**
+     * Call this to get the only instance of JobPropertiesManager.
+     *
+     * @return JobPropertiesManager object.
+     */
     public static JobPropertiesManager instanceOf() {
         if (instance == null) {
             instance = new JobPropertiesManager();
@@ -25,10 +43,18 @@ public class JobPropertiesManager {
         return instance;
     }
 
+    /**
+     * Private Constructor. (Singleton-Pattern)
+     */
     private JobPropertiesManager() {
         this.properties = this.readProperties();
     }
 
+    /**
+     * Read Properties from defined .properties file.
+     *
+     * @return Properties object containing all defined properties.
+     */
     private Properties readProperties() {
         Properties prop = new Properties();
         InputStream input;

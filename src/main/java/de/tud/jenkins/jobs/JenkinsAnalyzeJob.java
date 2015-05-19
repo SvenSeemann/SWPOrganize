@@ -10,6 +10,9 @@ import java.util.logging.Logger;
 
 
 /**
+ * Implementation of {@see JenkinsJob} handling the Analyzing Job of Jenkins.
+ * (Building metrics with Sonarqube)
+ *
  * @author svenseemann
  */
 public class JenkinsAnalyzeJob extends JenkinsJob {
