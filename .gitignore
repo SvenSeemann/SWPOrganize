@@ -1,2 +1,6 @@
+# IntelliJ stuff
 .idea/
 *.iml
+
+# ignore build stuff
+target/
