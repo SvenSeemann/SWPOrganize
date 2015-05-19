@@ -1,5 +1,9 @@
 package de.tud.github;
 
+import de.tud.swporganize.controller.OverviewController;
+import de.tud.util.LogStatementHelper;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 import org.kohsuke.github.GHEvent;
 import org.kohsuke.github.GHRepository;
 import org.kohsuke.github.GitHub;
@@ -8,6 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,7 +20,7 @@ import java.util.logging.Logger;
 /**
  * @author svenseemann
  */
-public class GitHubManager {
+public class GitHubManager extends Observable {
     private static GitHubManager instance;
 
     private String username;
@@ -27,6 +32,7 @@ public class GitHubManager {
     private GitHub github;
 
     private GitHubManager() {
+
     }
 
     public static GitHubManager instanceOf() {
@@ -37,13 +43,16 @@ public class GitHubManager {
      * Credentials are send to Github for authentication.
      */
     public void connectToGitHub() {
+        LogStatementHelper.instanceOf().addLogStatement("Connecting to GitHub...");
         try {
             System.out.println("Using as credentials:");
             System.out.println(this.username);
             System.out.println(this.oauthToken);
             github = GitHub.connect(this.username, this.oauthToken);
-
+            LogStatementHelper.instanceOf().addLogStatement("Connection to GitHub established");
         } catch (IOException ex) {
+
+            LogStatementHelper.instanceOf().addLogStatement("Could not establish connection to GitHub");
             Logger.getLogger(GitHubManager.class.getSimpleName())
                     .log(Level.SEVERE, null, ex);
         }
