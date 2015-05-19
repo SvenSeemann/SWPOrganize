@@ -1,9 +1,7 @@
 package de.tud.github;
 
-import de.tud.swporganize.controller.OverviewController;
 import de.tud.util.LogStatementHelper;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.Pane;
+
 import org.kohsuke.github.GHEvent;
 import org.kohsuke.github.GHRepository;
 import org.kohsuke.github.GitHub;
@@ -18,12 +16,31 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Manages the Connection to GitHub, the creation of repositories,
+ * the creation of WebHook and the creation of Milestones.
+ *
+ * It's implemented as Singleton, so to retrieve the current
+ * instance of it call the static instanceOf() method.
+ *
  * @author svenseemann
  */
 public class GitHubManager extends Observable {
+
+    /** holds the singleton instance */
     private static GitHubManager instance;
 
+    /**
+     * holds the GitHub-Username.
+     * {@see OverviewController} sets the Username in
+     * startSetup() method
+     */
     private String username;
+
+    /**
+     * oauthToken used to authenticate with GitHub.
+     * {@see OverviewController} sets the Token in
+     * startSetup() method
+     */
     private String oauthToken;
 
     /**
@@ -31,16 +48,23 @@ public class GitHubManager extends Observable {
      */
     private GitHub github;
 
-    private GitHubManager() {
+    /**
+     * Private Constructor (singleton-pattern)
+     */
+    private GitHubManager() {}
 
-    }
-
+    /**
+     * Get the single running instance of GitHubManager.
+     * @return GitHubManager Object
+     */
     public static GitHubManager instanceOf() {
         return instance == null ? instance = new GitHubManager() : instance;
     }
 
     /**
-     * Credentials are send to Github for authentication.
+     * Establishes connection to GitHub, via given username and oauthToken.
+     * If connection fails warning statement is send to {@see OverviewController}
+     * via {@see LogStatementHelper}.
      */
     public void connectToGitHub() {
         LogStatementHelper.instanceOf().addLogStatement("Connecting to GitHub...");

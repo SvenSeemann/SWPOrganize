@@ -14,21 +14,64 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Abstraction of a Jenkins Job.
+ * Containing all properties needed to create jobs on
+ * defined Jenkins server instance.
+ *
  * @author svenseemann
  */
 public abstract class JenkinsJob {
 
+    /**
+     * TODO
+     */
     private final XBProjector projector;
+
+    /**
+     * Reference to the Jenkins-XML configuration.
+     */
     private JenkinsJobXml jenkinsJobXml;
 
+    /**
+     * Source-Code-Management settings.
+     * (In our case mostly git)
+     */
     public Scm scm;
+
+    /**
+     * Custom workspace in which
+     * Jenkins runs all processes.
+     */
     public CustomWorkspace customWorkspace;
+
+    /**
+     * TODO
+     */
     public List<JobInformationElement> jobInformations;
+
+    /**
+     * TODO
+     */
     public List<BuilderElement> builders;
+
+    /**
+     * TODO
+     */
     public List<Trigger.TriggerElement> triggers;
+
+    /**
+     * TODO
+     */
     public List<Property.PropertyElement> properties;
+
+    /**
+     * TODO
+     */
     public List<Publisher.PublisherElement> publishers;
 
+    /**
+     * Builds basic Jenkins-Job with empty configurations.
+     */
     public JenkinsJob() {
         this.jobInformations = new LinkedList<>();
         this.builders = new LinkedList<>();
@@ -52,6 +95,12 @@ public abstract class JenkinsJob {
         return jenkinsJobXml;
     }
 
+    /**
+     * Generate Jenkins-XML configuration based on the
+     * set properties.
+     *
+     * @return Jenkins-XML configuration.
+     */
     public JenkinsJobXml generateJob() {
         List<JenkinsJobXml.Element> elementsForJob = new LinkedList<>();
 

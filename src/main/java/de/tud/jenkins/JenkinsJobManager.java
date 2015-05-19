@@ -8,6 +8,9 @@ import de.tud.jenkins.jobs.xml.JenkinsJobXml;
 import java.util.Observable;
 
 /**
+ * Singeleton Class managing all Jenkins Jobs.
+ * (Creation of the different Jobs)
+ *
  * @author svenseemann
  */
 public class JenkinsJobManager extends Observable {
@@ -15,8 +18,17 @@ public class JenkinsJobManager extends Observable {
 
     private JobPropertiesManager jpm;
 
+    /**
+     * Holding the only instance of JenkinsJobManager.
+     */
     private static JenkinsJobManager instance;
 
+    /**
+     * Call this to get the only instance of
+     * JenkinsJobManager.
+     *
+     * @return JenkinsJobManager object.
+     */
     public static JenkinsJobManager instanceOf() {
         if (instance == null) {
             instance = new JenkinsJobManager();
@@ -25,6 +37,9 @@ public class JenkinsJobManager extends Observable {
         return instance;
     }
 
+    /**
+     * Private constructor. (Singleton-Pattern)
+     */
     private JenkinsJobManager() {
         this.jpm = JobPropertiesManager.instanceOf();
     }

@@ -12,6 +12,11 @@ import java.util.Observable;
 import java.util.Optional;
 
 /**
+ * Singleton Manager class for all {@see Group} Objects.
+ * Manages the creation of the GitHub-Repository and
+ * Jenkins Resource for each group.
+ * Also manages deletion of Groups.
+ *
  * @author svenseemann
  */
 public class GroupManager extends Observable {
@@ -44,8 +49,16 @@ public class GroupManager extends Observable {
      */
     private List<Group> groups;
 
+    /**
+     * Holds the singleton instance.
+     */
     private static GroupManager instance;
 
+
+    /**
+     * Get the single running instance of GroupManager.
+     * @return GroupManager Object
+     */
     public static GroupManager instanceOf() {
         if (instance == null) {
             instance = new GroupManager();
@@ -53,6 +66,9 @@ public class GroupManager extends Observable {
         return instance;
     }
 
+    /**
+     * Private Constructor (Singleton-Pattern)
+     */
     private GroupManager() {
         this.groupCount = 0;
         this.namePrefix = "swt15w";
@@ -166,8 +182,9 @@ public class GroupManager extends Observable {
     }
 
     /**
-     * @param group
-     * @return
+     * Creates the jenkins job which is responsible for analyzing the project. (Sonarqube)
+     * @param group the group to create the job for
+     * @return the object with the wanted XML configuration
      */
     private JenkinsJobXml createGroupsAnalyzeJob(Group group) {
         JenkinsJobXml analyzeJob = JenkinsJobManager
@@ -216,6 +233,8 @@ public class GroupManager extends Observable {
                 + group.getName()
                 + GroupManager.WORKSPACE_PATH;
     }
+
+    // GETTER AND SETTER ###############################################################################################
 
     public void setGroupCount(Integer groupCount) {
         this.groupCount = groupCount;

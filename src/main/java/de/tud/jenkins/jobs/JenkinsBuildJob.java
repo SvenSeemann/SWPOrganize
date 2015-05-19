@@ -10,6 +10,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Implementation of {@see JenkinsJob}.
+ *
+ * This jobs manages the building, testing and packaging
+ * of the group projects.
+ *
  * @author svenseemann
  */
 public class JenkinsBuildJob extends JenkinsJob {
@@ -60,6 +65,15 @@ public class JenkinsBuildJob extends JenkinsJob {
         }
     }
 
+    /**
+     * Add Source-Code-Management to the Job, based on given
+     * properties.
+     *
+     * @param scmClass
+     * @param scmPlugin
+     * @param credentialsId
+     * @param scmUrl
+     */
     public void addScmGit(
             String scmClass,
             String scmPlugin,

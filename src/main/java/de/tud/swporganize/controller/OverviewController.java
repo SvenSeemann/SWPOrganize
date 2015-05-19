@@ -17,8 +17,13 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 
+/**
+ * This class manages the JavaFX Frame.
+ */
 public class OverviewController implements Observer, Initializable {
 
+    /// references to all GUI-Elements
+    // #################################################################################################################
     @FXML
     private TextField txtNamePrefix;
     @FXML
@@ -42,6 +47,14 @@ public class OverviewController implements Observer, Initializable {
     @FXML
     private TextArea textStateLog;
 
+    /**
+     * Called on Button-Click.
+     *
+     * Starts process:
+     *     - creates GitHub Repos
+     *     - builds Jenkins Jobs
+     *     - pushes them to JenkinsServer.
+     */
     @FXML
     private void startSetup() {
         String namePrefix = this.txtNamePrefix.getText();
@@ -70,6 +83,9 @@ public class OverviewController implements Observer, Initializable {
         GroupManager.instanceOf().createGroups();
     }
 
+    /**
+     * Attach to all necessary Observables.
+     */
     private void registerObservables() {
         GroupManager.instanceOf().addObserver(this);
         GitHubManager.instanceOf().addObserver(this);
@@ -78,6 +94,12 @@ public class OverviewController implements Observer, Initializable {
         LogStatementHelper.instanceOf().addObserver(this);
     }
 
+    /**
+     * Validate Group-Count field.
+     * So only integer values are accepted.
+     *
+     * @return Optional maybe containing the value.
+     */
     private Optional<Integer> evaluateGrpCount() {
         try {
             Integer grpCount = Integer.parseInt(this.txtGrpCount.getText());
@@ -87,6 +109,9 @@ public class OverviewController implements Observer, Initializable {
         }
     }
 
+    /**
+     * Pops error, if no integer value was entered in Group-Field
+     */
     private void showNoNumberErrorDialog() {
         Alert error = new Alert(Alert.AlertType.ERROR);
         error.setHeaderText("Falsche Eingabe");
@@ -94,16 +119,31 @@ public class OverviewController implements Observer, Initializable {
         error.show();
     }
 
+    /**
+     * Sets the given Label to Done and colors it green.
+     *
+     * @param label label you want to change.
+     */
     private void setLabelToDone(Label label) {
         label.setText("Erfolg");
         label.getStyleClass().add("successState");
     }
 
+    /**
+     * Sets the given Label to Error and colors it red.
+     *
+     * @param label label you want to change.
+     */
     private void setLabelToError(Label label) {
         label.setText("Fehler");
         label.getStyleClass().add("errorState");
     }
 
+    /**
+     * Adds given message to textStateLog-TextArea on the right.
+     *
+     * @param message Message you want to add.
+     */
     public void addToStateLog(String message) {
         System.out.println(message);
         this.textStateLog.appendText("\n");
@@ -118,6 +158,10 @@ public class OverviewController implements Observer, Initializable {
     @Override
     public void update(Observable o, Object arg) {
 
+        /**
+         * New log statement is incoming.
+         * Parse it and add it to textStateLog
+         */
         if(o instanceof LogStatementHelper) {
             String message = String.valueOf(arg);
             this.addToStateLog(message);
